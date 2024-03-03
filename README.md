@@ -10,18 +10,18 @@ Al igual que ocurre con los algoritmos de búsqueda local examinados anteriormen
 Es necesario definir algunos conceptos antes de continuar.
 
 Individuo: Es una solución válida para el problema, independientemente de lo buena que sea. Debe cumplir con las restricciones impuestas por el problema.
-	Población: Conjunto de individuos(soluciones).
-	Función de Adaptación: Indica con que grado se adapta el individuo a la solución. Es sinónimo de la función de evaluación que se ha venido usando hasta ahora.
-	Genes:  Conjunto de parámetros o características que describen al individuo (solución). Por ejemplo, en el problema TSP, una ruta valida se correspondería con un gen. En el caso del problema SAT, el conjunto de valores asignados a las variables serían un gen. Por ejemplo (1, 0, 0, 1, 1).
-	Cromosoma:  Cada uno de los parámetros o características que conforman un gen. Por ejemplo, si se tiene un gen que representa una ruta del problema TSP, cualquiera de las ciudades que conforman esa ruta sería un cromosoma.
-	Convergencia de la población:  No se trata de conseguir que una de las soluciones sea muy buena, sino que la población, en general, sea buena. Dicho de otro modo, si la población en general converge hacia características similares, cuya función de adaptación sea buena, esto servirá de piedra de toque para poder afirmar que se converge a una solución óptima. Se dice que una población ha convergido si hay un gran porcentaje de individuos cuya función de adaptación es igual o muy similar. A ese porcentaje se le llamará factor de convergencia y se denotará como la letra griega  γ. Un valor habitual que permite afirmar que la población ha convergido suele ser γ = 95%. Es decir, que el 95% de población tiene genes similares.
+Población: Conjunto de individuos(soluciones).
+Función de Adaptación: Indica con que grado se adapta el individuo a la solución. Es sinónimo de la función de evaluación que se ha venido usando hasta ahora.
+Genes:  Conjunto de parámetros o características que describen al individuo (solución). Por ejemplo, en el problema TSP, una ruta valida se correspondería con un gen. En el caso del problema SAT, el conjunto de valores asignados a las variables serían un gen. Por ejemplo (1, 0, 0, 1, 1).
+Cromosoma:  Cada uno de los parámetros o características que conforman un gen. Por ejemplo, si se tiene un gen que representa una ruta del problema TSP, cualquiera de las ciudades que conforman esa ruta sería un cromosoma.
+Convergencia de la población:  No se trata de conseguir que una de las soluciones sea muy buena, sino que la población, en general, sea buena. Dicho de otro modo, si la población en general converge hacia características similares, cuya función de adaptación sea buena, esto servirá de piedra de toque para poder afirmar que se converge a una solución óptima. Se dice que una población ha convergido si hay un gran porcentaje de individuos cuya función de adaptación es igual o muy similar. A ese porcentaje se le llamará factor de convergencia y se denotará como la letra griega  γ. Un valor habitual que permite afirmar que la población ha convergido suele ser γ = 95%. Es decir, que el 95% de población tiene genes similares.
 
 En general, un algoritmo génetico esta compuesto por cuatro fases bien diferenciadas.
 
 Selección: Se eligen las mejores soluciones(individuos) de toda la población. Dichas soluciones tendrán más probabilidad de dejar descendencia.
-	Cruce: En esta fase se combinan los genes de los mejores individuos, seleccionados en la fase anterior.
-	Mutación: Con cierta probabilidad, se mutará un cromosoma de algunos de los individuos. Hay que hacer notar que la probabilidad de que se dé una mutación, ha de mantenerse lo suficientemente baja, para que no se degrade el potencial de mejora del cruce genético.
-	Eliminación: Si no se elimina individuos, la población crecerá indefinidamente hasta hacerse inmanejable. Es por ello que hay que eliminar a aquellos individuos (soluciones) peor adaptados.
+Cruce: En esta fase se combinan los genes de los mejores individuos, seleccionados en la fase anterior.
+Mutación: Con cierta probabilidad, se mutará un cromosoma de algunos de los individuos. Hay que hacer notar que la probabilidad de que se dé una mutación, ha de mantenerse lo suficientemente baja, para que no se degrade el potencial de mejora del cruce genético.
+Eliminación: Si no se elimina individuos, la población crecerá indefinidamente hasta hacerse inmanejable. Es por ello que hay que eliminar a aquellos individuos (soluciones) peor adaptados.
 
  Alternativamente, puede usarse un limite en el número de iteraciones en vez de una condición de convergencia. O pueden usarse ambos criterios a la vez: el que se cumpla primero.
 
