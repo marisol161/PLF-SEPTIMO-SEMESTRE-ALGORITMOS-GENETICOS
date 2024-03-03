@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algoritmo Genético</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .jumbotron {
+        background-color: black;
+        color: white;
+      }
+
+      .table-dark th {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body class="container mt-5">
+    <div class="jumbotron">
+      <h1 class="display-9">Algoritmo Genético</h1>
+      <form id="geneticoForm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="max_iter">Número máximo de iteraciones:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="max_iter"
+              name="max_iter"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="max_poblacion">Tamaño máximo de la población:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="max_poblacion"
+              name="max_poblacion"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="num_vars">Número de variables:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="num_vars"
+              name="num_vars"
+              required
+            />
+          </div>
+        </div>
+
+        <center>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="ejecutarAlgoritmo()"
+          >
+            Ejecutar Algoritmo
+          </button>
+        </center>
+      </form>
+    </div>
+
+    <div id="resultado" class="table-responsive">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Mejor gen encontrado</th>
+            <th scope="col">Función de adaptación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="mejor_gen"></td>
+            <td id="funcion_adaptacion"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function ejecutarAlgoritmo() {
+        var form = document.getElementById("geneticoForm");
+        var formData = new FormData(form);
+
+        fetch("/algoritmo_genetico", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("mejor_gen").innerText = data.mejor_gen;
+            document.getElementById("funcion_adaptacion").innerText =
+              data.funcion_adaptacion;
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
